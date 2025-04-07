@@ -5,6 +5,14 @@ class Progress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Progress Page'));
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Text(
+          'Progress Page',
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+      ),
+    );
   }
 }

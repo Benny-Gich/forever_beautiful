@@ -5,6 +5,14 @@ class SkinLog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Skin Log Page'));
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Text(
+          'Skin Log Page',
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+      ),
+    );
   }
 }
