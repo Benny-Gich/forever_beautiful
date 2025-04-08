@@ -139,3 +139,8 @@ class DarkAppTheme extends AppTheme {
     surfaceTint: Color(0xFF60748A),
   );
 }
+
+extension ThemeX on BuildContext {
+  ColorScheme get colorScheme=> Theme.of(this).colorScheme ;
+  TextTheme get textTheme => Theme.of(this).textTheme;
+}

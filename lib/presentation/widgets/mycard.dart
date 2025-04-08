@@ -10,40 +10,56 @@ class MyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
-      width: 150,
+      //height: 250,
+      //width: 150,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(12),
-          topRight: Radius.circular(12),
-          bottomRight: Radius.circular(12),
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
+          bottomRight: Radius.circular(16),
         ),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.asset(product.imagePath),
-          ),
-          SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.only(right: 5.0, left: 5),
-            child: Text(
-              product.title,
-              maxLines: 1,
-              overflow: TextOverflow.clip,
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+          Expanded(
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Image.asset(product.imagePath, fit: BoxFit.cover),
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton.filledTonal(
+                    onPressed: () {},
+                    icon: Icon(Icons.help_outline),
+                  ),
+                ),
+              ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 5, right: 5),
-            child: Text(
-              product.description,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.bodySmall,
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              spacing: 8,
+              children: [
+                Text(
+                  product.title,
+                  maxLines: 1,
+                  overflow: TextOverflow.clip,
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                ),
+                Text(
+                  product.description,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ],
             ),
           ),
         ],

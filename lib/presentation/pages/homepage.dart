@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:forever_beautiful/common/product.dart';
 import 'package:forever_beautiful/presentation/pages/dummy_pages/glossary.dart';
 import 'package:forever_beautiful/presentation/pages/dummy_pages/progress.dart';
 import 'package:forever_beautiful/presentation/pages/dummy_pages/scanner.dart';
 import 'package:forever_beautiful/presentation/pages/dummy_pages/skin_log.dart';
-import 'package:forever_beautiful/presentation/widgets/mycard.dart';
+import 'package:forever_beautiful/presentation/widget/top_safe_area.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -25,138 +24,14 @@ class _HomepageState extends State<Homepage> {
   }
 
   Widget _buildHomeContent() {
-    return SafeArea(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ListTile(
-              leading: CircleAvatar(
-                radius: 30,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(30),
-                  child: Image.asset('assets/pexels-jenyzest-1799464.jpg'),
-                ),
-              ),
-              title: const Text(
-                'Good morning, Gich 👋',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-              ),
-              subtitle: const Text(
-                'Discover your personalized solutions!',
-                style: TextStyle(fontSize: 13, color: Colors.grey),
-              ),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  width: 230,
-                  height: 50,
-                  child: const TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      label: Text(
-                        'Search...',
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-                Row(
-                  children: [
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.white,
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Icon(
-                          Icons.notifications_active_outlined,
-                          size: 20,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 15),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.white,
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Icon(Icons.settings_outlined, size: 20),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            GridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 2,
-              childAspectRatio: 0.6,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                MyCard(
-                  product: Product(
-                    imagePath: 'assets/pexels-alipazani-2681751.jpg',
-                    title: 'Makeup',
-                    description: 'Your Personal Makeup Guidance',
-                  ),
-                ),
-                MyCard(
-                  product: Product(
-                    imagePath: 'assets/pexels-aog-pixels-263452684-12698450.jpg',
-                    title: 'Home Remedies',
-                    description: 'Your Personal Skincare Guidance',
-                  ),
-                ),
-                MyCard(
-                  product: Product(
-                    imagePath: 'assets/pexels-arshamhaghani-3387577.jpg',
-                    title: 'Products',
-                    description: 'Your Personal Skincare Guidance',
-                  ),
-                ),
-                MyCard(
-                  product: Product(
-                    imagePath: 'assets/pexels-photo-2787341.webp',
-                    title: 'Anti-Aging',
-                    description: 'Your Personal Skincare Guidance',
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
+    return TopSafeArea();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      body: PageStorage(
-        bucket: bucket,
-        child: currentScreen,
-      ),
+      body: PageStorage(bucket: bucket, child: currentScreen),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue,
         onPressed: () {
